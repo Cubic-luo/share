@@ -3,8 +3,23 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="share.dao.UserDao">
+    <!--创建新用户-->
+    <insert id="userInsert" parameterType="User">
+      INSERT INTO share_user (username,password,phone,sex,logo,state,role,point)
+      VALUES (#{username},#{password},#{phone},#{sex},#{logo},#{state},#{role},#{point})
+    </insert>
+    <!--删除用户-->
+    <delete id="userDelete">
+        DELETE FROM share_user WHERE username=#{username}
+    </delete>
     <!--查询所有用户-->
-    <select id="userQueryAll" resultMap="userMap">SELECT * FROM share_user</select>
+    <select id="userQueryAll" resultMap="userMap">
+      SELECT * FROM share_user
+    </select>
+    <!--根据用户名查询用户-->
+    <select id="userQueryByUsername" resultMap="userMap">
+        SELECT * FROM share_user WHERE username=#{username}
+    </select>
 
     <resultMap type="User" id="userMap">
         <id property="id" column="id"/>
@@ -16,5 +31,15 @@
         <result property="state" column="state"/>
         <result property="role" column="role"/>
         <result property="point" column="point"/>
+        <collection property="share" javaType="ArrayList" column="id"
+                    ofType="Share" select="share.dao.ShareDao.shareQueryByUsername"
+                    fetchType="lazy">
+            <id property="id" column="id"/>
+            <result property="username" column="username"/>
+            <result property="creatTime" column="creatTime"/>
+            <result property="content" column="content"/>
+            <result property="creatTime" column="creatTime"/>
+            <result property="state" column="state"/>
+        </collection>
     </resultMap>
 </mapper>

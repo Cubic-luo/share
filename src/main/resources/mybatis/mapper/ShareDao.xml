@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="share.dao.ShareDao">
+    <!--创建新分享-->
+    <insert id="shareInsert" parameterType="Share">
+      INSERT INTO share_share (title,content,creatTime,state,username)
+      VALUES (#{title},#{content},#{creatTime},#{state},#{username})
+    </insert>
+    <!--查询所有分享-->
+    <select id="shareQueryAll" resultMap="shareMap">
+      SELECT * FROM share_share s,share_user u WHERE u.username=s.username
+    </select>
+    <!--根据用户名查询分享-->
+    <select id="shareQueryByUsername" resultMap="shareMap">
+        SELECT * FROM share_share WHERE username=#{username}
+    </select>
+    <!--根据id查询分享-->
+    <select id="shareQueryById" resultMap="shareMap">
+        SELECT * FROM share_share WHERE id=#{shareId}
+    </select>
+    <resultMap type="Share" id="shareMap">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="creatTime" column="creatTime"/>
+        <result property="state" column="state"/>
+        <result property="username" column="username"/>
+        <association property="user" javaType="User">
+            <id property="id" column="id" />
+            <result property="username" column="username" />
+            <result property="password" column="password" />
+            <result property="role" column="role" />
+            <result property="logo" column="logo" />
+            <result property="point" column="point"/>
+            <result property="state" column="state"/>
+            <result property="phone" column="phone"/>
+            <result property="sex" column="sex"/>
+        </association>
+    </resultMap>
+</mapper>

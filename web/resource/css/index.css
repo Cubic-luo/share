@@ -1,0 +1,57 @@
+body{
+    background: #F5F5F5;
+    padding-bottom:50px;
+}
+/*新闻样式开始*/
+.newsList{
+    display: block;
+    font-size: 16px;
+    margin-bottom:10px;
+    color: #333;
+    background:#fff;
+    padding:10px;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+}
+/*新闻标题*/
+.newsList h1{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;/*多余的文字省略号展示*/
+}
+/*新闻内容*/
+.newsList .content{
+    margin-bottom:10px;
+    display: -webkit-box!important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2; /*这里控制在哪一行开始出现省略号*/
+}
+/*发布时间及作者信息栏*/
+.time{
+    text-align: right;
+}
+/*新闻样式结束*/
+
+/*底部菜单开始*/
+.menu{
+    position: fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    border-top: 1px solid #e0e0e0;
+    font-size: 18px;
+    background: #F5F5F5;
+    text-align: center;
+    color: #333333;
+    padding-top:10px;
+    background:white;
+    vertical-align: middle;
+}
+.menu img{
+    margin-top:-10px;
+}
+
+/*底部菜单结束*/

@@ -25,13 +25,6 @@ public interface UserDao {
      */
     int userDelete(String username);
 
-    /**
-     * 修改用户信息
-     *
-     * @param user 用户实体
-     * @return
-     */
-    int userUpdate(User user);
 
     /**
      * 查询所有用户
@@ -39,5 +32,12 @@ public interface UserDao {
      * @return
      */
     List<User> userQueryAll();
+
+    /**
+     * 根据用户名查询用户
+     * @param username
+     * @return
+     */
+    User userQueryByUsername(String username);
 
 }

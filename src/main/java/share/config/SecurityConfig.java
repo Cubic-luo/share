@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableWebMvcSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class  SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private DataSource dataSource;
@@ -31,8 +31,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource)
-                .usersByUsernameQuery("select username,password,true from news_user WHERE username=?")
-                .authoritiesByUsernameQuery("select username,role from news_user where username=?").passwordEncoder(new StandardPasswordEncoder("hfahdf3"));
+                .usersByUsernameQuery("select username,password,true from share_user WHERE username=?")
+                .authoritiesByUsernameQuery("select username,role from share_user where username=?").passwordEncoder(new StandardPasswordEncoder("hfahdf3"));
     }
 
 }
