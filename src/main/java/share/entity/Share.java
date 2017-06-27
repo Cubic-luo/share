@@ -13,9 +13,27 @@ public class Share {
     private String content;//分享的内容
     private Date creatTime;//创建时间
     private String state;//分享目前的状态
+    private String label1;//一级标签
+    private String label2;//二级标签
 
     //与用户关系为多对1
     private User user;
+
+    public String getLabel1() {
+        return label1;
+    }
+
+    public void setLabel1(String label1) {
+        this.label1 = label1;
+    }
+
+    public String getLabel2() {
+        return label2;
+    }
+
+    public void setLabel2(String label2) {
+        this.label2 = label2;
+    }
 
     public Long getId() {
         return id;
@@ -82,6 +100,8 @@ public class Share {
                 ", content='" + content + '\'' +
                 ", creatTime=" + creatTime +
                 ", state='" + state + '\'' +
+                ", label1='" + label1 + '\'' +
+                ", label2='" + label2 + '\'' +
                 ", user=" + user +
                 '}';
     }

@@ -19,6 +19,16 @@ body{
     white-space: nowrap;
     text-overflow: ellipsis;/*多余的文字省略号展示*/
 }
+
+.shareLabel{
+    font-size: 14px;
+    color:dodgerblue!important;
+}
+.username,.creatTime{
+    float: right;
+    font-size: 14px;
+    margin-left:8px;
+}
 /*新闻内容*/
 .newsList .content{
     margin-bottom:10px;
@@ -29,10 +39,7 @@ body{
     -webkit-box-orient:vertical;
     -webkit-line-clamp:2; /*这里控制在哪一行开始出现省略号*/
 }
-/*发布时间及作者信息栏*/
-.time{
-    text-align: right;
-}
+
 /*新闻样式结束*/
 
 /*底部菜单开始*/

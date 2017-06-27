@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import share.entity.Label1;
 import share.entity.Share;
 import share.service.Impl.ShareServiceImpl;
 
@@ -52,7 +53,9 @@ public class ShareController {
      * @return
      */
     @RequestMapping("share/publish")
-    public String sharePublish() {
+    public String sharePublish(Model model) {
+        List<Label1> labelList = si.labelQueryAll();//查询所有标签信息
+        model.addAttribute("labelList", labelList);
         return "sharePublish";
     }
 

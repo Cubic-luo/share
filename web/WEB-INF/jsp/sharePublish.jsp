@@ -34,14 +34,15 @@
             width: 80%;
             padding: 5px 8px;
             border: 1px solid #e0e0e0;
-            margin-bottom:10px;
+            margin-bottom: 10px;
         }
-        .loginForm select{
+
+        .loginForm select {
             box-sizing: border-box;
             width: 80%;
             padding: 5px 8px;
             border: 1px solid #e0e0e0;
-            margin-bottom:20px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -49,8 +50,22 @@
 <form action="<%=basePath%>share/insert" class="loginForm" method="post">
     <input name="username" type="hidden" value="<sec:authentication property="principal.username"/>">
     <input name="title" type="text" placeholder="标题">
-    <textarea  style="resize: none;box-sizing: border-box;width: 80%;padding: 5px 8px;height: 150px;border: 1px solid
-    #e0e0e0;margin-top: 20px;margin-bottom: 20px;"  name="content" placeholder="分享内容"></textarea>
+    <textarea style="resize: none;box-sizing: border-box;width: 80%;padding: 5px 8px;height: 150px;border: 1px solid
+    #e0e0e0;margin-top: 20px;margin-bottom: 20px;" name="content" placeholder="分享内容"></textarea>
+    <select>
+        <c:forEach var="label1" items="${labelList}">
+            <option>${label1.label1}</option>
+        </c:forEach>
+    </select>
+
+    <c:forEach var="label3" items="${labelList}">
+        <select>
+            <c:forEach var="label2" items="${label3.label2}">
+                <option>${label2.label2}</option>
+            </c:forEach>
+        </select>
+    </c:forEach>
+
     <input class="c_submitBtn" type="submit" value="发布">
 </form>
 </body>

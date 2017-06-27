@@ -18,13 +18,23 @@
     <title>首页</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     <link rel="stylesheet" href="<%=basePath%>resource/css/base.css">
+    <style>
+        .shareLabel{
+            font-size: 14px;
+            color:dodgerblue!important;
+        }
+        .username,.creatTime{
+            float: right;
+            font-size: 14px;
+            margin-left:8px;
+        }
+    </style>
 </head>
 <body>
 <div style="padding:0 10px;font-size: 16px;">
     <h1 class="c_Title">${share.title}</h1>
-    <div style="margin-bottom:10px;">${share.content}</div>
-    <div>本文由：${share.username}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布于:<fmt:formatDate
-            value="${share.creatTime}" type="both"/></div>
+    <div><span class="shareLabel">${share.label1}&nbsp;&nbsp;.&nbsp;&nbsp;${share.label2}</span></span><span class="creatTime"><fmt:formatDate value="${share.creatTime}" type="both" /></span><span class="username">${share.username}</span></div>
+    <div style="margin-bottom:10px;margin-top:10px;">${share.content}</div>
 </div>
 </body>
 </html>

@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import share.dao.Label1Dao;
 import share.dao.ShareDao;
+import share.entity.Label1;
 import share.entity.Share;
 import share.service.ShareService;
 
@@ -18,6 +20,8 @@ import java.util.List;
 public class ShareServiceImpl implements ShareService {
     @Autowired
     private ShareDao sd;
+    @Autowired
+    private Label1Dao ld;
 
     @Override
     public int shareInsert(Share share) {
@@ -42,6 +46,11 @@ public class ShareServiceImpl implements ShareService {
     public List<Share> shareQueryByUsername() {
         String username = getUserName();//获取当前登录用户名
         return sd.shareQueryByUsername(username);
+    }
+
+    @Override
+    public List<Label1> labelQueryAll() {
+        return ld.label1QueryAll();
     }
 
     /**

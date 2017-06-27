@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="share.dao.Label1Dao">
+    <!--创建一级标签-->
+    <insert id="label1Insert" parameterType="Label1">
+      INSERT INTO share_label1 (label1) VALUES (#{label1})
+    </insert>
+    <!--查询所有一级标签-->
+    <select id="label1QueryAll" resultMap="label1Map">
+      SELECT * FROM share_label1
+    </select>
+    <!--根据用户名查询用户-->
+    <select id="label1QueryById" resultMap="label1Map">
+        SELECT * FROM share_label1 WHERE id=#{label1Id}
+    </select>
+
+    <resultMap type="Label1" id="label1Map">
+        <id property="id" column="id"/>
+        <result property="label1" column="label1"/>
+        <collection property="label2" javaType="ArrayList" column="id"
+                    ofType="Label2" select="share.dao.Label2Dao.label2QueryById"
+                    fetchType="lazy">
+            <id property="id" column="id"/>
+            <result property="label2" column="label2"/>
+            <result property="label1Id" column="label1Id"/>
+        </collection>
+    </resultMap>
+</mapper>

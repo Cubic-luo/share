@@ -1,5 +1,6 @@
 package share.service;
 
+import share.entity.Label1;
 import share.entity.Share;
 
 import java.util.List;
@@ -23,8 +24,10 @@ public interface ShareService {
      * @return
      */
     List<Share> shareQueryAll();
+
     /**
      * 根据id查询分享
+     *
      * @param shareId
      * @return
      */
@@ -32,8 +35,16 @@ public interface ShareService {
 
     /**
      * 根据用户名查询分享
-     * @param username
+     *
+     * @param
      * @return
      */
     List<Share> shareQueryByUsername();
+
+    /**
+     * 查询所有一级标签及附带二级标签
+     *
+     * @return
+     */
+    List<Label1> labelQueryAll();
 }

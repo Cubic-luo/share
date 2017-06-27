@@ -5,8 +5,8 @@
 <mapper namespace="share.dao.ShareDao">
     <!--创建新分享-->
     <insert id="shareInsert" parameterType="Share">
-      INSERT INTO share_share (title,content,creatTime,state,username)
-      VALUES (#{title},#{content},#{creatTime},#{state},#{username})
+      INSERT INTO share_share (title,content,creatTime,state,username,label1,label2)
+      VALUES (#{title},#{content},#{creatTime},#{state},#{username},#{label1},#{label2})
     </insert>
     <!--查询所有分享-->
     <select id="shareQueryAll" resultMap="shareMap">
@@ -27,6 +27,8 @@
         <result property="creatTime" column="creatTime"/>
         <result property="state" column="state"/>
         <result property="username" column="username"/>
+        <result property="label1" column="label1"/>
+        <result property="label2" column="label2"/>
         <association property="user" javaType="User">
             <id property="id" column="id" />
             <result property="username" column="username" />
