@@ -27,7 +27,7 @@
         <a href="<%=basePath%>share/${share.id}/showDetail" class="newsList">
             <h1 class="c_Title">${share.title}<span></h1>
             <div class="content">${share.content}</div>
-            <div><span class="shareLabel">${share.label1}&nbsp;&nbsp;.&nbsp;&nbsp;${share.label2}</span></span><span class="creatTime"><fmt:formatDate value="${share.creatTime}" type="both" /></span><span class="username">${share.username}</span></div>
+            <div><span class="shareLabel">${share.label.label1String}&nbsp;&nbsp;.&nbsp;&nbsp;${share.label.label2}</span></span><span class="creatTime"><fmt:formatDate value="${share.creatTime}" type="both" /></span><span class="username">${share.username}</span></div>
         </a>
     </c:forEach>
 </div>

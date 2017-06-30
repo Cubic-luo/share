@@ -6,6 +6,7 @@ package share.entity;
 public class Label2 {
     private Long id;
     private String label2;//二级标签名称
+    private String label1String;//所属一级标签
     private Long label1Id;//所属一级标签id
     private Label1 label1;//所属一级标签
 
@@ -14,9 +15,18 @@ public class Label2 {
         return "Label2{" +
                 "id=" + id +
                 ", label2='" + label2 + '\'' +
+                ", label1Strig='" + label1String + '\'' +
                 ", label1Id=" + label1Id +
                 ", label1=" + label1 +
                 '}';
+    }
+
+    public String getLabel1String() {
+        return label1String;
+    }
+
+    public void setLabel1String(String label1String) {
+        this.label1String = label1String;
     }
 
     public Long getId() {

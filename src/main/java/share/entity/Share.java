@@ -13,26 +13,27 @@ public class Share {
     private String content;//分享的内容
     private Date creatTime;//创建时间
     private String state;//分享目前的状态
-    private String label1;//一级标签
-    private String label2;//二级标签
+    private Long tagId;//标签id
 
     //与用户关系为多对1
     private User user;
+    //与标签是多对1
+    private Label2 label;
 
-    public String getLabel1() {
-        return label1;
+    public Label2 getLabel() {
+        return label;
     }
 
-    public void setLabel1(String label1) {
-        this.label1 = label1;
+    public void setLabel(Label2 label) {
+        this.label = label;
     }
 
-    public String getLabel2() {
-        return label2;
+    public Long getTagId() {
+        return tagId;
     }
 
-    public void setLabel2(String label2) {
-        this.label2 = label2;
+    public void setTagId(Long tagId) {
+        this.tagId = tagId;
     }
 
     public Long getId() {
@@ -100,9 +101,9 @@ public class Share {
                 ", content='" + content + '\'' +
                 ", creatTime=" + creatTime +
                 ", state='" + state + '\'' +
-                ", label1='" + label1 + '\'' +
-                ", label2='" + label2 + '\'' +
+                ", tagId=" + tagId +
                 ", user=" + user +
+                ", label=" + label +
                 '}';
     }
 }

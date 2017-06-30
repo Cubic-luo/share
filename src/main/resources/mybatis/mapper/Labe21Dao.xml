@@ -5,21 +5,25 @@
 <mapper namespace="share.dao.Label2Dao">
     <!--创建一级标签-->
     <insert id="label2Insert" parameterType="Label2">
-      INSERT INTO share_label2 (label2,label1Id) VALUES (#{label2},#{label1Id})
+      INSERT INTO share_label2 (label2,label1Id,label1String) VALUES (#{label2},#{label1Id},#{label1String})
     </insert>
     <!--查询所有一级标签-->
     <select id="label2QueryAll" resultMap="label2Map">
       SELECT * FROM share_label2 l2,share_label1 l1 WHERE l1.id=l2.label1Id
     </select>
-    <!--根据用户名查询用户-->
+    <!--根据二级标签id查询-->
     <select id="label2QueryById" resultMap="label2Map">
         SELECT * FROM share_label2 WHERE id=#{label2Id}
     </select>
-
+    <!--根据一级标签id查询-->
+    <select id="label2QueryByLabel1Id" resultMap="label2Map">
+        SELECT * FROM share_label2 WHERE label1Id=#{label1Id}
+    </select>
     <resultMap type="Label2" id="label2Map">
         <id property="id" column="id"/>
         <result property="label2" column="label2"/>
         <result property="label1Id" column="label1Id"/>
+        <result property="label1String" column="label1String"/>
         <association property="label1" javaType="Label1">
             <id property="id" column="id" />
             <result property="label1" column="label1" />

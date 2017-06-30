@@ -5,20 +5,20 @@
 <mapper namespace="share.dao.ShareDao">
     <!--创建新分享-->
     <insert id="shareInsert" parameterType="Share">
-      INSERT INTO share_share (title,content,creatTime,state,username,label1,label2)
-      VALUES (#{title},#{content},#{creatTime},#{state},#{username},#{label1},#{label2})
+      INSERT INTO share_share (title,content,creatTime,state,username,tagId)
+      VALUES (#{title},#{content},#{creatTime},#{state},#{username},#{tagId})
     </insert>
     <!--查询所有分享-->
     <select id="shareQueryAll" resultMap="shareMap">
-      SELECT * FROM share_share s,share_user u WHERE u.username=s.username
+      SELECT * FROM share_share s,share_user u,share_label2 l2  WHERE u.username=s.username AND l2.id=s.tagId
     </select>
     <!--根据用户名查询分享-->
     <select id="shareQueryByUsername" resultMap="shareMap">
-        SELECT * FROM share_share WHERE username=#{username}
+        SELECT * FROM share_share s,share_label2 l2 WHERE s.username=#{username} AND l2.id=s.tagId
     </select>
     <!--根据id查询分享-->
     <select id="shareQueryById" resultMap="shareMap">
-        SELECT * FROM share_share WHERE id=#{shareId}
+        SELECT * FROM share_share s,share_label2 l2 WHERE s.id=#{shareId} AND l2.id=s.tagId
     </select>
     <resultMap type="Share" id="shareMap">
         <id property="id" column="id"/>
@@ -27,8 +27,7 @@
         <result property="creatTime" column="creatTime"/>
         <result property="state" column="state"/>
         <result property="username" column="username"/>
-        <result property="label1" column="label1"/>
-        <result property="label2" column="label2"/>
+        <result property="tagId" column="tagId"/>
         <association property="user" javaType="User">
             <id property="id" column="id" />
             <result property="username" column="username" />
@@ -39,6 +38,12 @@
             <result property="state" column="state"/>
             <result property="phone" column="phone"/>
             <result property="sex" column="sex"/>
+        </association>
+        <association property="label" javaType="Label2">
+            <id property="id" column="id" />
+            <result property="label2" column="label2"/>
+            <result property="label1String" column="label1String"/>
+            <result property="label1Id" column="label1Id"/>
         </association>
     </resultMap>
 </mapper>

@@ -52,21 +52,30 @@
     <input name="title" type="text" placeholder="标题">
     <textarea style="resize: none;box-sizing: border-box;width: 80%;padding: 5px 8px;height: 150px;border: 1px solid
     #e0e0e0;margin-top: 20px;margin-bottom: 20px;" name="content" placeholder="分享内容"></textarea>
-    <select>
+    <select id="label1" name="label1">
         <c:forEach var="label1" items="${labelList}">
             <option>${label1.label1}</option>
         </c:forEach>
     </select>
-
-    <c:forEach var="label3" items="${labelList}">
-        <select>
-            <c:forEach var="label2" items="${label3.label2}">
-                <option>${label2.label2}</option>
-            </c:forEach>
-        </select>
-    </c:forEach>
-
+    <div id="label2">
+        <c:forEach var="label1" items="${labelList}">
+            <select  style="display: none;">
+                <c:forEach items="${label1.label2}" var="label2">
+                    <option  value="${label2.id}">${label2.label2}</option>
+                </c:forEach>
+            </select>
+        </c:forEach>
+    </div>
     <input class="c_submitBtn" type="submit" value="发布">
 </form>
+<script src="<%=basePath%>resource/js/jquery.min.js"></script>
+<script>
+    $("#label1").change(function () {
+        var index = $("#label1").get(0).selectedIndex;
+        $("#label2 select").removeAttr("name");
+        $("#label2 select").eq(index).attr("name","tagId");
+        $("#label2 select").eq(index).show().siblings().hide();
+    })
+</script>
 </body>
 </html>

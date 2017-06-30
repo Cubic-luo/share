@@ -33,7 +33,7 @@
 <body>
 <div style="padding:0 10px;font-size: 16px;">
     <h1 class="c_Title">${share.title}</h1>
-    <div><span class="shareLabel">${share.label1}&nbsp;&nbsp;.&nbsp;&nbsp;${share.label2}</span></span><span class="creatTime"><fmt:formatDate value="${share.creatTime}" type="both" /></span><span class="username">${share.username}</span></div>
+    <div><span class="shareLabel">${share.label.label1String}&nbsp;&nbsp;.&nbsp;&nbsp;${share.label.label2}</span></span><span class="creatTime"><fmt:formatDate value="${share.creatTime}" type="both" /></span><span class="username">${share.username}</span></div>
     <div style="margin-bottom:10px;margin-top:10px;">${share.content}</div>
 </div>
 </body>

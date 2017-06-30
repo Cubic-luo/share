@@ -9,7 +9,7 @@
     </insert>
     <!--查询所有一级标签-->
     <select id="label1QueryAll" resultMap="label1Map">
-      SELECT * FROM share_label1
+      SELECT * FROM share_label1 l1
     </select>
     <!--根据用户名查询用户-->
     <select id="label1QueryById" resultMap="label1Map">
@@ -20,11 +20,12 @@
         <id property="id" column="id"/>
         <result property="label1" column="label1"/>
         <collection property="label2" javaType="ArrayList" column="id"
-                    ofType="Label2" select="share.dao.Label2Dao.label2QueryById"
+                    ofType="Label2" select="share.dao.Label2Dao.label2QueryByLabel1Id"
                     fetchType="lazy">
             <id property="id" column="id"/>
             <result property="label2" column="label2"/>
             <result property="label1Id" column="label1Id"/>
+            <result property="label1String" column="label1String"/>
         </collection>
     </resultMap>
 </mapper>
